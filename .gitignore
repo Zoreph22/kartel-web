@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/windows,linux,macos,visualstudiocode,node,react,nextjs
-# Edit at https://www.toptal.com/developers/gitignore?templates=windows,linux,macos,visualstudiocode,node,react,nextjs
+# Created by https://www.toptal.com/developers/gitignore/api/linux,windows,macos,react,node,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=linux,windows,macos,react,node,visualstudiocode
 
 ### Linux ###
 *~
@@ -49,10 +49,6 @@ Temporary Items
 ### macOS Patch ###
 # iCloud generated files
 *.icloud
-
-### NextJS ###
-# Next build dir
-.next/
 
 ### Node ###
 # Logs
@@ -258,4 +254,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/windows,linux,macos,visualstudiocode,node,react,nextjs
+# End of https://www.toptal.com/developers/gitignore/api/linux,windows,macos,react,node,visualstudiocode

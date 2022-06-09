@@ -1,0 +1,29 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true,
+    "backend/node_modules": true,
+    "backend/package-lock.json": true,
+    ".vscode": true,
+    ".gitignore": true,
+    "README.md": true,
+    "frontend/tsconfig.json": true,
+    "frontend/package.json": true,
+    "backend/package.json": true,
+    "package.json": true,
+    "frontend/vite.config.ts": true,
+    "frontend/tsconfig.node.json": true,
+    "backend/spec": true,
+    "frontend/node_modules": true,
+    "Design Kartel": true
+  },
+  "explorerExclude.backup": null
+}
