@@ -9,6 +9,7 @@ export class Players {
   public get players(): Player[] {
     return this._players;
   }
+  
   public set players(value: Player[]) {
     this._players = value;
   }
