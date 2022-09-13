@@ -1,8 +1,8 @@
 import { Application, NextFunction, Request, Response } from "express";
-import { Lobby } from "../models/logic/Lobby";
-import { lobbys } from "../models/collections/Lobbys";
-import { Player } from "../models/logic/Player";
-import { players } from "../models/collections/Players";
+import { Lobby } from "../services/game/Lobby";
+import { lobbys } from "../services/collections/Lobbys";
+import { Player } from "../services/game/Player";
+import { players } from "../services/collections/Players";
 import * as messages from "../sockets/messages";
 
 export const KartelApi = (pointerApp: Application) => {

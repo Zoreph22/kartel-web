@@ -36,7 +36,7 @@ export class Plateau {
   //Méthode qui génère un nombre aléatoire
   private randnum(): number {
     let i = <number>(Math.round(Math.random() * 42 + 1));
-    console.log(i);
+    // console.log(i);
     return i;
   }
 

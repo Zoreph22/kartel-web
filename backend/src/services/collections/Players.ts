@@ -1,5 +1,5 @@
-import { Player } from "../logic/Player";
-import { Reserve } from "../logic/Reserve";
+import { Player } from "../game/Player";
+import { Reserve } from "../game/Reserve";
 
 export class Players {
   private _players: Player[] = [];
@@ -9,7 +9,7 @@ export class Players {
   public get players(): Player[] {
     return this._players;
   }
-  
+
   public set players(value: Player[]) {
     this._players = value;
   }

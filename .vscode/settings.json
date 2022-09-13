@@ -23,7 +23,9 @@
     "frontend/tsconfig.node.json": true,
     "backend/spec": true,
     "frontend/node_modules": true,
-    "Design Kartel": true
+    "Design Kartel": true,
+    "backend\\src/public": true,
+    "backend/tsconfig.json": true
   },
-  "explorerExclude.backup": null
+  "explorerExclude.backup": {}
 }

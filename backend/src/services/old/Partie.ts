@@ -1,20 +1,20 @@
-import { De } from "../logic/De";
-import { Player } from "../logic/Player";
-import { Plateau } from "../logic/Plateau";
-import { Prison } from "../logic/Prison";
+import { De } from "../game/De";
+import { Player } from "../game/Player";
+import { Plateau } from "../game/Plateau";
+import { Prison } from "../game/Prison";
 import readline from "readline-sync"
-import { Boss } from "../logic/Boss";
-import { Gang } from "../logic/Gang";
+import { Boss } from "../game/Boss";
+import { Gang } from "../game/Gang";
 
 export class Partie {
   //Attributs de la classe Partie
   private de: De = new De();
   private prison: Prison = new Prison();
-  private plateau: Plateau = new Plateau(); 
-//   private joueurs: Joueur[];
+  private plateau: Plateau = new Plateau();
+  // private joueurs: Joueur[];
 
-//   public getJoueurs(): Joueur[] {return this.joueurs;}
-//   public setJoueurs(joueurs: Joueur[] ): void{this.joueurs = joueurs;}
+  // public getJoueurs(): Joueur[] {return this.joueurs;}
+  // public setJoueurs(joueurs: Joueur[] ): void{this.joueurs = joueurs;}
 
   //Initialisation de certains attributs
   public initPartie(): void{
@@ -50,7 +50,7 @@ export class Partie {
 
   //Méthode qui permet de récupérer les jeton, de déplacer le detective et de restart le plateau
 //   public recupjeton(playcase: number, joueur: Joueur , facede: number): void{
-//       let currentpos: number = this.plateau.detective.CurrentPos(this.plateau); 
+//       let currentpos: number = this.plateau.detective.CurrentPos(this.plateau);
 //       let nextpos: number = currentpos + playcase;
 //       if(currentpos + facede >= this.plateau.PlatLength()){
 //           this.plateau.restartPlat();

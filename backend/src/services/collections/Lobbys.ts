@@ -1,4 +1,4 @@
-import { Lobby } from "../logic/Lobby";
+import { Lobby } from "../game/Lobby";
 import { players } from "./Players";
 
 export class Lobbys {

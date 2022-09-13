@@ -1,7 +1,7 @@
-import { Player } from "../logic/Player";
+import { Player } from "../game/Player";
 import { Partie } from "./Partie";
 import { PartieSettings } from "./PartieSettings";
-import { Reserve } from "../logic/Reserve";
+import { Reserve } from "../game/Reserve";
 import readline from "readline-sync"
 
 export class Menu {
@@ -39,14 +39,14 @@ export class Menu {
       // let joueurs: Joueur[] = [];
       for(let i=0;i<=x-1;i++){
           console.log("Saisir le nom du Joueur "+(i+1));
-          let nomjoueur: string = readline.question(); 
+          let nomjoueur: string = readline.question();
           // joueurs[i] = new Player(nomjoueur, new Reserve());
       }
       // this.partie.setJoueurs(joueurs);
   }
 
   public toString(): string{
-      
+
       return this.textMenu;
   }
 }
