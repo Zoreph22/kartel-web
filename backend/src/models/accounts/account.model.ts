@@ -1,6 +1,4 @@
-import { LOADIPHLPAPI } from "dns";
 import { ObjectId } from "mongodb";
-import { Kartel } from "../../services/old/Kartel";
 import { connection, kartelDb } from "../mongodb";
 
 export interface Accounts {
@@ -9,8 +7,6 @@ export interface Accounts {
   accountType: "registered" | "anonymous";
   id?: string;
 }
-
-//IMPORTANT sanatize les input avec mongo-sanatize module npm
 
 export const readAccountByUsername = async (username: string): Promise<Accounts> => {
   const account = await kartelDb.collection<Accounts>("accounts").findOne({ username: username });
