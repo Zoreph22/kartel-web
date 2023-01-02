@@ -12,6 +12,10 @@
 <details><summary>Backend</summary><p>
 
 - [x] Implementation des bases de données.
+- [ ] Implémenter les services (déporter le code des API REST dans les SERVICES).
+- [ ] Gestions des permissions (Middleware).
+- [ ] Recoder la logique du jeu.
+- [ ] Implémenter les API REST restante. (Accounts,...).
 
 </p></details>
 
