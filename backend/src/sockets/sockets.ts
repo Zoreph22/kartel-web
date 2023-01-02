@@ -46,7 +46,7 @@ export class Sockets {
     this.io = new Server(this.httpServer, { cors: { origin: "http://localhost:3000" } });
 
     this.io.on("connection", (socket) => {
-      // console.log(socket.id);
+      console.log(socket.id);
       this.registerClientSocket(socket);
 
       socket.on("disconnect", () => {

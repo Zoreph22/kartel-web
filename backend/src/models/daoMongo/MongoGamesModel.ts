@@ -1,5 +1,4 @@
 import { ObjectId } from "mongodb";
-import { connection, kartelDb } from "../mongodb";
 
 export interface LastGames {}
 
