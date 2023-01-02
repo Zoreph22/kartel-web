@@ -11,7 +11,7 @@
 
 <details><summary>Backend</summary><p>
 
-- [ ] ?
+- [x] Implementation des bases de données.
 
 </p></details>
 
