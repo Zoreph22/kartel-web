@@ -16,6 +16,7 @@
 - [ ] Gestions des permissions (Middleware).
 - [ ] Recoder la logique du jeu.
 - [ ] Implémenter les API REST restante. (Accounts,...).
+- [ ] Refactor démarrage du serveur et initialisation (loaders...).
 
 </p></details>
 
