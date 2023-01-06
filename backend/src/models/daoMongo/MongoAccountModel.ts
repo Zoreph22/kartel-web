@@ -20,6 +20,7 @@ export default class MongoAccountModel implements IAccountModel {
         username: account.username,
         password: account.password,
         accountType: account.accountType,
+        isAdmin: account.isAdmin,
         id: "" + account._id,
       };
     } else {
@@ -36,6 +37,7 @@ export default class MongoAccountModel implements IAccountModel {
         username: account.username,
         password: account.password,
         accountType: account.accountType,
+        isAdmin: account.isAdmin,
         id: "" + account._id,
       };
     } else {

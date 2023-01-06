@@ -1,8 +1,8 @@
 import { socket } from "./sockets";
-import { Lobby } from "../services/game/Lobby";
-import { lobbys } from "../services/collections/Lobbys";
-import { Player } from "../services/game/Player";
-import { players } from "../services/collections/Players";
+import { Lobby } from "../services/beforeRefactor/game/Lobby";
+import { lobbys } from "../services/beforeRefactor/collections/Lobbys";
+import { Player } from "../services/beforeRefactor/game/Player";
+import { players } from "../services/beforeRefactor/collections/Players";
 
 const io = socket.io;
 
@@ -39,7 +39,7 @@ export const updateScore = (roomId) => {
 export const updateBoardGame = (roomId) => {
   let lobby: Lobby = lobbys.find(roomId);
   if (lobby) {
-    let board = JSON.stringify(lobby.game.plateau);
+    let board = JSON.stringify(lobby.game.board);
     io.to(roomId).emit("updateBoard", board);
   }
 };
@@ -47,7 +47,7 @@ export const updateBoardGame = (roomId) => {
 export const updateJail = (roomId) => {
   let lobby: Lobby = lobbys.find(roomId);
   if (lobby) {
-    let jail = JSON.stringify(lobby.game.prison);
+    let jail = JSON.stringify(lobby.game.jail);
     io.to(roomId).emit("updateJail", jail);
   }
 };

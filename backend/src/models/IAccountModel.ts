@@ -1,8 +1,8 @@
-//TODO games: string[];, rajouter un champs
 export interface Account {
   username: string;
   password: string;
   accountType: "registered" | "anonymous";
+  isAdmin: boolean;
   id?: string;
 }
 
