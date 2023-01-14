@@ -72,10 +72,9 @@ export class Board {
   }
 
   //Remet le detective à l'emplacement 0 du tableau et déplace les autres token gang vers la fin du tableau.
-  public manageBoard(): void {
-    let tete = this.board.splice(1,this._detective.position);
-    let queue = this.board.splice(this._detective.position+1);
+  public manageBoard(shift: number): void {
+    let tete = this.board.splice(1, shift);
+    let queue = this.board.splice(shift+1);
     this.board = [this._detective, ...queue, ...tete];
-    this._detective.position = 0;
   }
 }

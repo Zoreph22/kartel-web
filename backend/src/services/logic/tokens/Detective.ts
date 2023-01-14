@@ -1,17 +1,6 @@
 import { ETokenType, Token } from "./Token";
 
 export class Detective extends Token {
-  //Attributs de classe qui contient la position du detective
-  private _position: number;
-
-  //Méthode get et set pour l'attribut position
-  public get position(): number {
-    return this._position;
-  }
-  public set position(value: number) {
-    this._position = value;
-  }
-
   public getType(): ETokenType {
     return ETokenType.Detective;
   }

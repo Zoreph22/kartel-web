@@ -2,20 +2,20 @@ import { Gang } from "../tokens/Gang";
 
 export class Storage {
   //Attributs de la classe storage
-  private _storage: Gang[] = [];
+  private _array: Gang[] = [];
 
-  public get storage(): Gang[] {
-    return this._storage;
+  public get array(): Gang[] {
+    return this._array;
   }
 
   //Méthodes get et set de l'attribut storage
-  public getGang(i: number): Gang {
-    return this.storage[i];
+  public getElement(i: number): Gang {
+    return this.array[i];
   }
 
   //Méthodes qui permet d'ajouter un élément dans le tableau sur une case vide
-  public addGang(gang: Gang): void {
-    this._storage.push(gang);
+  public addElement(gang: Gang): void {
+    this._array.push(gang);
   }
 
   //Méthode qui permet de calculer le score d'un player en fonction de ces tokens
