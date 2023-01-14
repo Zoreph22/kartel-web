@@ -14,7 +14,7 @@
 - [x] Implementation des bases de données.
 - [ ] Implémenter les services (déporter le code des API REST dans les SERVICES).
 - [x] Gestions des permissions (Middleware).
-- [ ] Recoder la logique du jeu.
+- [x] Recoder la logique du jeu.
 - [ ] Implémenter les API REST restante. (Accounts,...).
 - [ ] Refactor démarrage du serveur et initialisation (loaders...).
 
