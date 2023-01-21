@@ -2,9 +2,9 @@ import { Db, ObjectId, WithId } from "mongodb";
 import { dbconnection } from "../../app";
 import { stripId } from "../../utils";
 import MongoDbConnection from "../databases/MongoDbConnection";
-import { Game } from "../IGamesModels";
+import { Game, IGamesModel } from "../IGamesModels";
 
-export default class MOngoGamesModel {
+export default class MongoGamesModel implements IGamesModel {
   private kartelDb: Db;
 
   constructor() {

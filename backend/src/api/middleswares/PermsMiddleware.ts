@@ -1,12 +1,20 @@
-import { Application, NextFunction, Request, Response } from "express";
-import bcrypt from "bcrypt";
+import { NextFunction, Request, Response } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
+import { daofactory } from "../../app";
 import { SECRET } from "../../config";
 
-export const isAdmin = function (req: Request, res: Response, next: NextFunction) {
+export const isAdmin = async function (req: Request, res: Response, next: NextFunction) {
+  let accounts = daofactory.createAccount();
   const token = req.headers.authorization.split(" ")[1];
   try {
-    let payload: JwtPayload = <JwtPayload>jwt.verify(token, SECRET);
+    const payload: JwtPayload = <JwtPayload>jwt.decode(token);
+    let account = await accounts.readAccountById(payload.id);
+
+    if (!account) {
+      throw new Error("Compte inexistant !");
+    }
+
+    jwt.verify(token, SECRET + account.password);
     if (payload.isAdmin) {
       next();
     } else {
@@ -17,10 +25,18 @@ export const isAdmin = function (req: Request, res: Response, next: NextFunction
   }
 };
 
-export const isUser = function (req: Request, res: Response, next: NextFunction) {
-  const token = req.headers.authorization.split(" ")[1];
+export const isUser = async function (req: Request, res: Response, next: NextFunction) {
+  let accounts = daofactory.createAccount();
+  const token = req.headers.authorization?.split(" ")[1];
   try {
-    jwt.verify(token, SECRET);
+    const payload: JwtPayload = <JwtPayload>jwt.decode(token);
+    let account = await accounts.readAccountById(payload.id);
+
+    if (!account) {
+      throw new Error("Compte inexistant !");
+    }
+
+    jwt.verify(token, SECRET+account.password);
     next();
   } catch (error) {
     return res.status(403).json("Vous devez être connecter ou votre session à expiré !");
@@ -40,8 +56,7 @@ export const hasPerm = function (perm: "admin" | "user" | "guest") {
         return res.status(403).json("Vous devez être déconnecter !");
       }
     };
-  }
-  else {
+  } else {
     throw new Error("Permission fourni inconnu !");
   }
 };

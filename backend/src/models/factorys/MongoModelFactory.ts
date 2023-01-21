@@ -5,9 +5,10 @@ import { IStatsModel } from "../IStatsModel";
 import MongoStatsModel from "../daoMongo/MongoStatsModel";
 import MOngoGamesModels from "../daoMongo/MongoGamesModel";
 import MongoGamesModel from "../daoMongo/MongoGamesModel";
+import { IGamesModel } from "../IGamesModels";
 
 export default class MongoModelFactory implements IModelFactory {
-  createGames() {
+  createGames(): IGamesModel {
     return new MongoGamesModel();
   }
 

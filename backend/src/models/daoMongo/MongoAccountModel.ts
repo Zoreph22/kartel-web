@@ -14,9 +14,29 @@ export default class MongoAccountModel implements IAccountModel {
   public async readAccountByUsername(username: string): Promise<Account> {
     const account = await this.kartelDb
       .collection<Account>("accounts")
-      .findOne({ username: username });
+      .findOne({ username: username.toLowerCase() });
     if (account) {
       return {
+        email: account.email,
+        username: account.username,
+        password: account.password,
+        accountType: account.accountType,
+        isAdmin: account.isAdmin,
+        id: "" + account._id,
+      };
+    } else {
+      return null;
+    }
+  }
+
+  public async readAccountByEmail(email: string): Promise<Account> {
+    const account = await this.kartelDb
+      .collection<Account>("accounts")
+      .findOne({ email: email.toLowerCase() });
+      console.log(account);
+    if (account) {
+      return {
+        email: account.email,
         username: account.username,
         password: account.password,
         accountType: account.accountType,
@@ -34,6 +54,7 @@ export default class MongoAccountModel implements IAccountModel {
       .findOne({ _id: new ObjectId(id) });
     if (account) {
       return {
+        email: account.email,
         username: account.username,
         password: account.password,
         accountType: account.accountType,

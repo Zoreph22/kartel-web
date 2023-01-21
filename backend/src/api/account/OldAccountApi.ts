@@ -41,7 +41,7 @@ export const AccountApi = (pointerApp: Application) => {
       {
         id: user.id,
         username: user.username,
-        isAdmin: true,
+        isAdmin: false,
       },
       SECRET,
       { expiresIn: "24 hours" }

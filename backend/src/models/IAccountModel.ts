@@ -1,8 +1,10 @@
 export interface Account {
+  email: string
   username: string;
   password: string;
   accountType: "registered" | "anonymous";
   isAdmin: boolean;
+  lastLogoutTime?: string;
   id?: string;
 }
 
