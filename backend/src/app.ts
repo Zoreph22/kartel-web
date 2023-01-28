@@ -14,6 +14,8 @@ import { IAccountModel } from "./models/IAccountModel";
 import { IGamesModel } from "./models/IGamesModels";
 import { isAdmin } from "./api/middleswares/PermsMiddleware";
 import ApiFactory from "./api/factorys/ApiFactory";
+import { errors } from "celebrate";
+import bodyParser from "body-parser";
 
 
 /* -------------------------------- Init App -------------------------------- */
@@ -45,6 +47,8 @@ const dbInit = async () => {
 }
 
 dbInit()
+
+app.use(errors());
 
 app.listen(5000, () => {
   // console.log("Server running");

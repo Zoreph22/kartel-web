@@ -10,6 +10,7 @@ export interface Account {
 
 export interface IAccountModel {
   readAccountByUsername(username: string): Promise<Account>;
+  readAccountByEmail(email: string): Promise<Account>;
   readAccountById(id: string): Promise<Account>;
   createAccount(account: Account): Promise<string>;
   updateAccount(account: Account): Promise<void>;

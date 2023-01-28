@@ -33,7 +33,6 @@ export default class MongoAccountModel implements IAccountModel {
     const account = await this.kartelDb
       .collection<Account>("accounts")
       .findOne({ email: email.toLowerCase() });
-      console.log(account);
     if (account) {
       return {
         email: account.email,
@@ -75,7 +74,7 @@ export default class MongoAccountModel implements IAccountModel {
   public async updateAccount(account: Account): Promise<void> {
     const result = await this.kartelDb
       .collection<Account>("accounts")
-      .replaceOne({ _id: new ObjectId(account.id) }, stripId(account));
+      .updateOne({ _id: new ObjectId(account.id) }, {$set: stripId(account)});
   }
 
   public async deleteAccount(account: Account): Promise<void> {

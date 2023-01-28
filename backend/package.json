@@ -20,8 +20,8 @@
   "homepage": "https://github.com/Zoreph22/Kartel-web-app#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "celebrate": "^15.0.1",
     "cors": "^2.8.5",
-    "email-validator": "^2.0.4",
     "express": "^4.18.1",
     "express-mongo-sanitize": "^2.2.0",
     "jsonwebtoken": "^9.0.0",

@@ -4,7 +4,14 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 import { Account } from "../../models/IAccountModel";
 import { daofactory } from "../../app";
 import { REFRESH_SECRET, SECRET } from "../../config";
-import { IGetAccountBody, ILoginBody, IRegisterBody, IRenewHeaders } from "../../api/account/IAccountsBody";
+import {
+  IDeleteAccountBody,
+  IGetAccountBody,
+  ILoginBody,
+  IRegisterBody,
+  IRenewHeaders,
+  IUpdateAccountBody,
+} from "../../api/account/IAccountsBody";
 
 export default class AccountService {
   public static async login(body: ILoginBody) {
@@ -21,12 +28,9 @@ export default class AccountService {
         const token = this.generateToken(account);
         const refreshToken = this.generateRefreshToken(account);
         return { token: token, refreshToken: refreshToken };
-      }
-      else {
+      } else {
         throw new Error(`Error. User ${body.email} don't exist or wrong password !`);
       }
-
-
     } catch {
       throw new Error(`Error. User ${body.email} don't exist or wrong password !`);
     }
@@ -42,7 +46,7 @@ export default class AccountService {
       throw new Error(`Error. ${body.email.toLowerCase()} already existing`);
     }
 
-    if(usernameExisting) {
+    if (usernameExisting) {
       throw new Error(`Error. ${body.username.toLowerCase()} already existing`);
     }
 
@@ -70,22 +74,15 @@ export default class AccountService {
         throw new Error("Compte inexistant !");
       }
 
-      jwt.verify(refreshToken, REFRESH_SECRET+account.password);
+      jwt.verify(refreshToken, REFRESH_SECRET + account.password);
 
       const newToken = this.generateToken(account);
       const newRefreshToken = this.generateRefreshToken(account);
       return { token: newToken, refreshToken: newRefreshToken };
-
     } catch (error) {
       throw new Error("Token invalide ou expiré !");
     }
   }
-
-  public static getAccount(body: IGetAccountBody) {}
-
-  public static updateAccount(body) {}
-
-  public static deleteAccount(body) {}
 
   public static generateToken(account: Account) {
     return jwt.sign(
@@ -95,7 +92,7 @@ export default class AccountService {
         email: account.email,
         isAdmin: account.isAdmin,
       },
-      SECRET+account.password,
+      SECRET + account.password,
       { expiresIn: "2h" }
     );
   }
@@ -105,8 +102,66 @@ export default class AccountService {
       {
         id: account.id,
       },
-      REFRESH_SECRET+account.password,
+      REFRESH_SECRET + account.password,
       { expiresIn: "1y" }
     );
+  }
+
+  public static async getAccount(body: IGetAccountBody) {
+    let accounts = daofactory.createAccount();
+
+    try {
+      let account = await accounts.readAccountById(body.accountId);
+
+      if (!account) {
+        throw new Error("Compte inexistant !");
+      }
+
+      return account;
+    } catch (error) {
+      throw new Error("Problèmes de requêtes sur le serveur !");
+    }
+  }
+
+  public static async updateAccount(body: IUpdateAccountBody) {
+    let accounts = daofactory.createAccount();
+
+    try {
+      let account: Account = await accounts.readAccountById(body.id);
+
+      if (!account) {
+        throw new Error("Compte inexistant !");
+      }
+
+      if (body.password) {
+        body.password = await bcrypt.hash(body.password, 10);
+      }
+
+      let newAccount: IUpdateAccountBody = {
+        id: body.id || account.id,
+        username: body.username || account.username,
+        email: body.email || account.email,
+        password: body.password || account.password,
+      };
+
+      await accounts.updateAccount(newAccount);
+    } catch (error) {
+      throw new Error("Problèmes de requêtes sur le serveur !");
+    }
+  }
+
+  public static async deleteAccount(body: IDeleteAccountBody) {
+    let accounts = daofactory.createAccount();
+
+    try {
+      let account: Account = await accounts.readAccountById(body.accountId);
+
+      if (!account) {
+        throw new Error("Compte inexistant !");
+      }
+      await accounts.deleteAccount(account);
+    } catch (error) {
+      throw new Error("Problèmes de requêtes sur le serveur !");
+    }
   }
 }
